@@ -1,6 +1,6 @@
-from Tree.Tree import Tree
+from Tree import Tree
 
 if __name__ == '__main__':
-    tree = Tree
+    tree = Tree()
 
     tree.printRoot()
