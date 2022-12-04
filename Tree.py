@@ -5,8 +5,7 @@ class Tree(object):
     __root = Node()
 
     def __init__(self):
-        self.__root.setValors(['B', 'M', 'M', 'M', 'C', 'C', 'C'], [
-                              "V", "V", "V", "V", "V", "V", "V"])
+        self.__root.setValors(['B', 'M', 'M', 'M', 'C', 'C', 'C'], [])
 
     def getRoot(self):
         return self.__root
