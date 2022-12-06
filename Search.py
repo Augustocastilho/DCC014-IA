@@ -22,9 +22,7 @@ class Search():
 
     def isGoal(self, node):
         node = node.getRightValor()
-        result = set(node) & set(self.__goalState[1])
-        # result eh a intersecao entre os dois conjuntos
-        if result.__len__() == 7:
+        if node.__len__() == self.__goalState[1].__len__():
             return True
         else:
             return False
