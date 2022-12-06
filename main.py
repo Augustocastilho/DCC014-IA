@@ -7,3 +7,4 @@ if __name__ == '__main__':
     tree.printRoot()
 
     search = Backtracking()
+    search.search()
