@@ -4,27 +4,27 @@ from Tree import Tree
 
 
 class Search():
-    __tree = Tree()
-    __initalState = None
-    __goalState = None
-    __currentNode = None
-    __fail = False
-    __success = False
-    __deep = 0
-    __deepLimit = 0
-    __solutionPath = []
-    __visiteds = []
+    _tree = Tree()
+    _initalState = None
+    _goalState = None
+    _currentNode = None
+    _fail = False
+    _success = False
+    _deep = 0
+    _deepLimit = 0
+    # _solutionPath = []
+    # _visiteds = []
 
     def __init__(self, deepLimit=0):
-        self.__initalState = self.__tree.getRoot()
-        self.__goalState = [[], ['B', 'M', 'M', 'M', 'C', 'C', 'C']]
-        self.__currentNode = self.__tree.getRoot()
-        self.__deepLimit = deepLimit
-        self.__visiteds.append(self.__initalState)
+        self._initalState = self._tree.getRoot()
+        self._goalState = [[], ['B', 'M', 'M', 'M', 'C', 'C', 'C']]
+        self._currentNode = self._tree.getRoot()
+        self._deepLimit = deepLimit
+        self._visiteds.append(self._initalState)
 
     def isGoal(self, node):
         node = node.getRightValor()
-        if node.__len__() == self.__goalState[1].__len__():
+        if node.__len__() == self._goalState[1].__len__():
             return True
         else:
             return False
@@ -238,7 +238,7 @@ class Search():
 
     # seleciona as regras a serem aplicadas ou retorna None
     @abstractmethod
-    def rules(self, node):
+    def rules(self, node, ruleNumber):
         pass
 
     @abstractmethod
@@ -251,54 +251,54 @@ class Search():
 
     # getters and setters
     def getTree(self):
-        return self.__tree
+        return self._tree
 
     def getInitalState(self):
-        return self.__initalState
+        return self._initalState
 
     def getGoalState(self):
-        return self.__goalState
+        return self._goalState
 
     def getCurrentNode(self):
-        return self.__currentNode
+        return self._currentNode
 
     def setCurrentNode(self, currentNode):
-        self.__currentNode = currentNode
+        self._currentNode = currentNode
 
     def getFail(self):
-        return self.__fail
+        return self._fail
 
     def setFail(self, fail):
-        self.__fail = fail
+        self._fail = fail
 
     def getSuccess(self):
-        return self.__success
+        return self._success
 
     def setSuccess(self, success):
-        self.__success = success
+        self._success = success
 
     def getDeep(self):
-        return self.__deep
+        return self._deep
 
     def setDeep(self, deep):
-        self.__deep = deep
+        self._deep = deep
 
     def getDeepLimit(self):
-        return self.__deepLimit
+        return self._deepLimit
 
     def getSolutionPath(self):
-        self.__solutionPath.append(self.__currentNode)
-        while self.__currentNode.getFatherNode() != None:
-            self.__currentNode = self.__currentNode.getFatherNode()
-            self.__solutionPath.append(self.__currentNode)
-        return self.__solutionPath
+        self._solutionPath.append(self._currentNode)
+        while self._currentNode.getFatherNode() != None:
+            self._currentNode = self._currentNode.getFatherNode()
+            self._solutionPath.append(self._currentNode)
+        return self._solutionPath
 
     def getVisiteds(self):
-        return self.__visiteds
+        return self._visiteds
 
     def setVisiteds(self, node, operation):
         if operation == "+":
-            self.__visiteds.append(node)
+            self._visiteds.append(node)
         elif operation == "-":
-            self.__visiteds.remove(node)
+            self._visiteds.remove(node)
         

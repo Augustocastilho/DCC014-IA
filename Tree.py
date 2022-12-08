@@ -2,22 +2,22 @@ from Node import Node
 
 
 class Tree(object):
-    __root = Node()
+    _root = Node()
 
     def __init__(self):
-        self.__root.setValors(['B', 'M', 'M', 'M', 'C', 'C', 'C'], [])
+        self._root.setValors(['B', 'M', 'M', 'M', 'C', 'C', 'C'], [])
 
     def getRoot(self):
-        return self.__root
+        return self._root
 
     # apenas para teste, deve ser substituido por um printTree
     def printRoot(self):
-        left = self.__root.getLeftValor()
+        left = self._root.getLeftValor()
         print("[ ", end="")
         for valor in left:
             print(valor, end=" ")
         print("], [ ", end="")
-        right = self.__root.getRightValor()
+        right = self._root.getRightValor()
         for valor in right:
             print(valor, end=" ")
         print("]")

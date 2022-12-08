@@ -5,5 +5,5 @@ from Search import Search
 class DepthFirst(Search):
 
     def search(self):
-        while self.__success == False and self.__fail == False:
+        while self._success == False and self._fail == False:
             pass
