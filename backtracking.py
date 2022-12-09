@@ -1,26 +1,69 @@
 from Search import Search
 
 class Backtracking(Search):
-
-    def search(self):
-        ruleNumber = 1
-        self._solution = self._recursiveBacktracking(self._initalState, ruleNumber)
+    backs = 0
+    
+    def search(self):    
+        self._solution = self._recursiveBacktracking(self._initalState)
         return self._solution
 
-    def _recursiveBacktracking(self, state, ruleNumber):
+    def _recursiveBacktracking(self, currentNode):
+        currentNode.setRuleNumber(currentNode.getRuleNumber() + 1)
+        rule = None
         if not self.getSuccess() and not self.getFail():
-            if self.getDeepLimit() != 0 and self.getDeep() >= self.getDeepLimit():
-                self._recursiveBacktracking(self.getCurrentNode().getFatherNode(), ruleNumber)
-            self.rules(state, ruleNumber)
-            rule = self.getCurrentNode().getRules()
-            if rule != None:
-                self._recursiveBacktracking(rule, ruleNumber)
-            else:
+            if self.getDeepLimit() != 0 and self.getDeep() > self.getDeepLimit():
+                self.backs = self.backs + 1
+                # self._recursiveBacktracking(currentNode.getFatherNode())
+                return None
+            match currentNode.getRuleNumber():
+                case 1:
+                    rule = self.rule1(currentNode)
+                    if rule != None:
+                        self._recursiveBacktracking(rule)
+                    else:
+                        self._recursiveBacktracking(currentNode)
+                case 2:
+                    rule = self.rule2(currentNode)
+                    if rule != None:
+                        self._recursiveBacktracking(rule)
+                    else:
+                        self._recursiveBacktracking(currentNode)
+                case 3:
+                    rule = self.rule3(currentNode)
+                    if rule != None:
+                        self._recursiveBacktracking(rule)
+                    else:
+                        self._recursiveBacktracking(currentNode)
+                case 4:
+                    rule = self.rule4(currentNode)
+                    if rule != None:
+                        self._recursiveBacktracking(rule)
+                    else:
+                        self._recursiveBacktracking(currentNode)
+                case 5:
+                    rule = self.rule5(currentNode)
+                    if rule != None:
+                        self._recursiveBacktracking(rule)
+                    else:
+                        self._recursiveBacktracking(currentNode)
+                case default:
+                    self.backs = self.backs + 1
+                    # self._recursiveBacktracking(self.getCurrentNode().getFatherNode(), ruleNumber)
+                    return None
+
+            # self.rules(state, ruleNumber)
+            # rule = self.getCurrentNode().getRules()
+            # if rule != None:
+            #     self._recursiveBacktracking(rule, ruleNumber)
+            # else:
+            #     self.setFail(True)
+            #     return None
+            if currentNode.getRuleNumber() > 5 and currentNode.equals(self._initalState):
                 self.setFail(True)
                 return None
-        if self.isGoal(state):
+        if self.isGoal(currentNode):
             self.setSuccess(True)
-            return self.solution(state)
+            return currentNode
         return None
 
     def rules(self, node, ruleNumber):

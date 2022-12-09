@@ -20,7 +20,7 @@ class Search():
         self._goalState = [[], ['B', 'M', 'M', 'M', 'C', 'C', 'C']]
         self._currentNode = self._tree.getRoot()
         self._deepLimit = deepLimit
-        self._visiteds.append(self._initalState)
+        # self._visiteds.append(self._initalState)
 
     def isGoal(self, node):
         node = node.getRightValor()
@@ -173,7 +173,7 @@ class Search():
 
     
     def validate(self, left, right):
-        return self.verifyCannibals(left, right) and self.verifyInPath(left)
+        return self.verifyCannibals(left, right) # and self.verifyInPath(left)
 
     # verifica se o numero de canibais eh maior que o numero de missionarios
     def verifyCannibals(self, left, right):
@@ -200,11 +200,11 @@ class Search():
         return True
 
     # verifica se o estado ja esta no caminho, True se nao estiver, False se estiver
-    def verifyInPath(self, left):
-        for value in self.getVisiteds():
-            if self.equals(left, value.getLeftValor()):
-                return False
-        return True
+    # def verifyInPath(self, left):
+    #     for value in self.getVisiteds():
+    #         if self.equals(left, value.getLeftValor()):
+    #             return False
+    #     return True
 
     # compara se os valores de M, C e B sao iguais em ambos os vetores
     def equals(self, value1, value2):
@@ -286,19 +286,19 @@ class Search():
     def getDeepLimit(self):
         return self._deepLimit
 
-    def getSolutionPath(self):
-        self._solutionPath.append(self._currentNode)
-        while self._currentNode.getFatherNode() != None:
-            self._currentNode = self._currentNode.getFatherNode()
-            self._solutionPath.append(self._currentNode)
-        return self._solutionPath
+    # def getSolutionPath(self):
+    #     self._solutionPath.append(self._currentNode)
+    #     while self._currentNode.getFatherNode() != None:
+    #         self._currentNode = self._currentNode.getFatherNode()
+    #         self._solutionPath.append(self._currentNode)
+    #     return self._solutionPath
 
-    def getVisiteds(self):
-        return self._visiteds
+    # def getVisiteds(self):
+    #     return self._visiteds
 
-    def setVisiteds(self, node, operation):
-        if operation == "+":
-            self._visiteds.append(node)
-        elif operation == "-":
-            self._visiteds.remove(node)
+    # def setVisiteds(self, node, operation):
+    #     if operation == "+":
+    #         self._visiteds.append(node)
+    #     elif operation == "-":
+    #         self._visiteds.remove(node)
         
