@@ -4,16 +4,15 @@ class Node:
     # valores a esquerda do rio e a direita do rio
     _leftValor = []
     _rightValor = []
-    _childrenNodes = []
+    _children = []
     _father = None
 
     def setValors(self, left, right):
         self._leftValor = left
         self._rightValor = right
 
-    def setChildrenNode(self, node):
-        node.setFather(self)
-        self._childrenNodes.append(node)
+    def setChildren(self, node):
+        self._children.append(node)
 
     def setFather(self, node):
         self._father = node
@@ -24,8 +23,8 @@ class Node:
     def getRightValor(self):
         return self._rightValor
 
-    def getChildrenNodes(self):
-        return self._childrenNodes
+    def getChildren(self):
+        return self._children
 
     def getFather(self):
         return self._father
