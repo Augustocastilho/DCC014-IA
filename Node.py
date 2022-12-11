@@ -5,8 +5,7 @@ class Node:
     _leftValor = []
     _rightValor = []
     _childrenNodes = []
-    _fatherNode = None
-    _ruleNumber = 0
+    _father = None
 
     def setValors(self, left, right):
         self._leftValor = left
@@ -17,10 +16,7 @@ class Node:
         self._childrenNodes.append(node)
 
     def setFather(self, node):
-        self._fatherNode = node
-
-    def setRuleNumber(self, ruleNumber):
-        self._ruleNumber = ruleNumber
+        self._father = node
 
     def getLeftValor(self):
         return self._leftValor
@@ -31,11 +27,8 @@ class Node:
     def getChildrenNodes(self):
         return self._childrenNodes
 
-    def getFatherNode(self):
-        return self._fatherNode
-
-    def getRuleNumber(self):
-        return self._ruleNumber
+    def getFather(self):
+        return self._father
 
     def printNode(self):
         print("[ ", end="")
