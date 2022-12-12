@@ -11,5 +11,7 @@ if __name__ == '__main__':
     # search = Backtracking()
     # search.search()
 
-    search = BreadthFirst()
+    # search = BreadthFirst()
+    search = DepthFirst()
+    
     search.search()

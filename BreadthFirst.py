@@ -52,26 +52,3 @@ class BreadthFirst(Search):
             node.getChildren().pop()
         else:
             node.getChildren()[-1].setFather(node)
-
-
-    # def search(self):
-    #     while self._success == False and self._fail == False:
-    #         pass
-    #     queue = [[self.start]]
-    #     visited = set()
-    #     while queue:
-    #         path = queue.pop(0)
-    #         node = path[-1]
-    #         if node not in visited:
-    #             neighbours = self.graph[node]
-    #             for neighbour in neighbours:
-    #                 new_path = list(path)
-    #                 new_path.append(neighbour)
-    #                 queue.append(new_path)
-    #                 if neighbour == self.goal:
-    #                     return new_path
-    #             visited.add(node)
-    #     return "No path found"
-
-    # def __str__(self):
-    #     return str(self.BreadthFirstSearch())
