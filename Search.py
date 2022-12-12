@@ -12,6 +12,7 @@ class Search():
     _success = False
     _deep = 0
     _deepLimit = 0
+    _solution = None
 
     def __init__(self, deepLimit=0):
         self._initalState = self._tree.getRoot()
@@ -254,6 +255,11 @@ class Search():
             return True
         return False
 
+    def printSolution(self, node):
+        if node.getFather() != None:
+            self.printSolution(node.getFather())
+        node.printNode()
+
     @abstractmethod
     def search(self):
         pass
@@ -294,3 +300,6 @@ class Search():
 
     def getDeepLimit(self):
         return self._deepLimit
+
+    def getSolution(self):
+        return self._solution
