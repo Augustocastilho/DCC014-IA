@@ -5,44 +5,45 @@ class Backtracking(Search):
     backs = 0
 
     def search(self):
-        self._solution = self._recursiveBacktracking(self._initalState)
-        print("Backs: ", self.backs)
-        return self._solution
+        self._recursiveBacktracking(self._initalState)
+        print("\nBacks:", self.backs)
+        return
 
     def _recursiveBacktracking(self, currentNode):
         if currentNode is None:
-            return None
+            return
         if self.isGoal(currentNode):
+            self._solution = currentNode
             self.setSuccess(True)
-            return currentNode
+            return
         if not self.getSuccess() and not self.getFail():
             if self.getDeepLimit() != 0 and self.getDeep() > self.getDeepLimit():
                 self.backs = self.backs + 1
-                return None
+                return
             if self.getSuccess():
                 return currentNode
             self._recursiveBacktracking(self.rule1(currentNode))
             if self.getSuccess():
-                return currentNode
+                return
             self._recursiveBacktracking(self.rule2(currentNode))
             if self.getSuccess():
-                return currentNode
+                return
             self._recursiveBacktracking(self.rule3(currentNode))
             if self.getSuccess():
-                return currentNode
+                return
             self._recursiveBacktracking(self.rule4(currentNode))
             if self.getSuccess():
-                return currentNode
+                return
             self._recursiveBacktracking(self.rule5(currentNode))
             if self.getSuccess():
-                return currentNode
+                return
             if self.equals(self._initalState.getLeftValor(), currentNode.getLeftValor()):
                 self.setFail(True)
-                return None
+                return
             else:
                 if self.getSuccess():
-                    return currentNode
+                    return
                 print("back")
                 self.backs = self.backs + 1
-                return None
-        return None
+                return
+        return

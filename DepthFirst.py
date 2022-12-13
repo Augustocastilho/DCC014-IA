@@ -15,6 +15,7 @@ class DepthFirst(Search):
             currentNode = self._heap.pop(-1)
             self.setCurrentNode(currentNode)
             if self.isGoal(currentNode):
+                self._solution = currentNode
                 self.setSuccess(True)
                 return
             self.applyRules(currentNode)

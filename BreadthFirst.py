@@ -16,6 +16,7 @@ class BreadthFirst(Search):
             currentNode = self._queue.pop(0)
             self.setCurrentNode(currentNode)
             if self.isGoal(currentNode):
+                self._solution = currentNode
                 self.setSuccess(True)
                 return
             self.applyRules(currentNode)
