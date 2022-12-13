@@ -30,6 +30,9 @@ class Node:
     def getFather(self):
         return self._father
 
+    def removeLastChild(self):
+        self._children.pop()
+
     def printNode(self):
         print("[ ", end="")
         for valor in self._leftValor:

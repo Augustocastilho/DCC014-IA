@@ -12,6 +12,8 @@ class Backtracking(Search):
     def _recursiveBacktracking(self, currentNode):
         if currentNode is None:
             return
+        if(currentNode.getFather() is not None):
+            currentNode.getFather().setChildren(currentNode)
         if self.isGoal(currentNode):
             self._solution = currentNode
             self.setSuccess(True)
@@ -21,7 +23,7 @@ class Backtracking(Search):
                 self.backs = self.backs + 1
                 return
             if self.getSuccess():
-                return currentNode
+                return
             self._recursiveBacktracking(self.rule1(currentNode))
             if self.getSuccess():
                 return
@@ -44,6 +46,7 @@ class Backtracking(Search):
                 if self.getSuccess():
                     return
                 print("back")
+                currentNode.getFather().removeLastChild()
                 self.backs = self.backs + 1
                 return
         return

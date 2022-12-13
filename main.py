@@ -29,8 +29,10 @@ if __name__ == '__main__':
             exit()
     
         search.search()
-        print("\nCaminho Solução: ")    
+        print("\nÁrvore gerada:")
         tree.printTree()
+        print("\nCaminho Solução: ")
+        search.printSolution(search.getSolution())
         print("----------------------------------------------------------------------------------------------------\n")
         print("Selecione o Algorigmo de Busca: ")
         print("1 - Backtracking")
