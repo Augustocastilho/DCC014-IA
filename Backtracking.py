@@ -21,7 +21,7 @@ class Backtracking(Search):
                 self.backs = self.backs + 1
                 return
             if self.getSuccess():
-                return
+                return currentNode
             self._recursiveBacktracking(self.rule1(currentNode))
             if self.getSuccess():
                 return

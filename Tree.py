@@ -5,6 +5,7 @@ class Tree(object):
     _root = Node()
 
     def __init__(self):
+        self._root.getChildren().clear()
         self._root.setValors(['B', 'M', 'M', 'M', 'C', 'C', 'C'], [])
 
     def getRoot(self):
@@ -21,3 +22,6 @@ class Tree(object):
         for valor in right:
             print(valor, end=" ")
         print("]")
+
+    def printTree(self):
+        print(self.getRoot().printNodes())

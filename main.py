@@ -4,8 +4,6 @@ from BreadthFirst import BreadthFirst
 from DepthFirst import DepthFirst
 
 if __name__ == '__main__':
-    tree = Tree()
-
     print("--------------------------------Problema dos Missionarios e Canibais--------------------------------")
     print("Selecione o Algorigmo de Busca: ")
     print("1 - Backtracking")
@@ -16,6 +14,7 @@ if __name__ == '__main__':
     print("")
     
     while option != 4:
+        tree = Tree()
         tree.printRoot()
         if option == 1:
             search = Backtracking()
@@ -26,16 +25,16 @@ if __name__ == '__main__':
         elif option == 4:
             exit()
         else:
-            print("Opcao Invalida")
+            print("Opção Inválida")
             exit()
     
         search.search()
-        print("\nCaminho Solucao: ")
-        search.printSolution(search.getSolution())
+        print("\nCaminho Solução: ")    
+        tree.printTree()
         print("----------------------------------------------------------------------------------------------------\n")
         print("Selecione o Algorigmo de Busca: ")
         print("1 - Backtracking")
         print("2 - Busca em Largura")
         print("3 - Busca em Profundidade")
         print("4 - Sair")
-        option = int(input("Opcao: "))
+        option = int(input("Opção: "))
