@@ -21,3 +21,6 @@ class Tree(object):
         for valor in right:
             print(valor, end=" ")
         print("]")
+
+    def printTree(self):
+        print(self.getRoot().printNodes())

@@ -8,10 +8,11 @@ if __name__ == '__main__':
 
     tree.printRoot()
 
-    # search = Backtracking()
-    # search.search()
-
+    search = Backtracking()
     # search = BreadthFirst()
-    search = DepthFirst()
+    # search = DepthFirst()
     
     search.search()
+
+    print('\n\n')
+    tree.printTree()
