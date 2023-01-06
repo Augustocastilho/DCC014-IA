@@ -225,6 +225,33 @@ class Search():
             father = father.getFather()
         return False
 
+    def applyRulesToCurrentNode(self, node):
+        node.setChildren(self.rule1(node))
+        if node.getChildren()[-1] == None:
+            node.getChildren().pop()
+        else:
+            node.getChildren()[-1].setFather(node)
+        node.setChildren(self.rule2(node))
+        if node.getChildren()[-1] == None:
+            node.getChildren().pop()
+        else:
+            node.getChildren()[-1].setFather(node)
+        node.setChildren(self.rule3(node))
+        if node.getChildren()[-1] == None:
+            node.getChildren().pop()
+        else:
+            node.getChildren()[-1].setFather(node)
+        node.setChildren(self.rule4(node))
+        if node.getChildren()[-1] == None:
+            node.getChildren().pop()
+        else:
+            node.getChildren()[-1].setFather(node)
+        node.setChildren(self.rule5(node))
+        if node.getChildren()[-1] == None:
+            node.getChildren().pop()
+        else:
+            node.getChildren()[-1].setFather(node)
+
     # compara se os valores de M, C e B sao iguais em ambos os vetores
     def equals(self, value1, value2):
         numM1 = 0
