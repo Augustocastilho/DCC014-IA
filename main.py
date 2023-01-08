@@ -3,6 +3,7 @@ from Tree import Tree
 from Backtracking import Backtracking
 from BreadthFirst import BreadthFirst
 from DepthFirst import DepthFirst
+from AStar import AStar
 
 
 def menu():
@@ -25,7 +26,6 @@ if __name__ == '__main__':
     
     while True:
         tree = Tree()
-        tree.printRoot()
         match option:
             case 1:
                 search = Backtracking()
@@ -38,13 +38,14 @@ if __name__ == '__main__':
             case 5:
                 pass
             case 6:
-                pass
+                search = AStar()
             case 7:
                 exit()
             case default:
                 print("Opção Inválida")
                 exit()
     
+        tree.printRoot()
         search.search()
         print("\nÁrvore gerada:")
         tree.printTree()

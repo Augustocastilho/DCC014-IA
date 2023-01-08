@@ -1,5 +1,3 @@
-
-
 class Node:
     def __init__(self):
         super().__init__()
@@ -8,10 +6,12 @@ class Node:
         self._father = None
         self._children = []
         self._edgeWeightInPath = 0
+        self._heuristic = 0
 
     def setValors(self, left, right):
         self._leftValor = left
         self._rightValor = right
+        self.setHeuristic(right)
 
     def setChildren(self, node):
         self._children.append(node)
@@ -21,6 +21,12 @@ class Node:
 
     def setEdgeWeightInPath(self, valor):
         self._edgeWeightInPath = self._father.getEdgeWeightInPath() + valor
+
+    def setHeuristic(self, right):
+        self._heuristic = 6
+        for val in right:
+            if val == 'M' or val == 'C':
+                self._heuristic -= 1
 
     def getLeftValor(self):
         return self._leftValor
@@ -37,6 +43,12 @@ class Node:
     def getEdgeWeightInPath(self):
         return self._edgeWeightInPath
 
+    def getHeuristic(self):
+        return self._heuristic
+
+    def getEvaluationFunction(self):
+        return self._edgeWeightInPath + self._heuristic
+
     def removeLastChild(self):
         self._children.pop()
 
@@ -51,12 +63,13 @@ class Node:
 
     def printNodes(self, level = 0):
         ret = "\t"*level
+        ret += str(self._edgeWeightInPath)
         ret += "[ "
         for valor in self._leftValor:
-            ret += valor
+            ret += valor + " "
         ret += "], [ "
         for valor in self._rightValor:
-            ret += valor
+            ret += valor + " "
         ret += "] \n"
         for child in self.getChildren():
             if(child != None):
