@@ -225,32 +225,23 @@ class Search():
             father = father.getFather()
         return False
 
+    def setNewNode(self, node, newNode, moveWeight):
+        if newNode != None:
+            newNode.setFather(node)
+            newNode.setEdgeWeightInPath(moveWeight)
+            node.setChildren(newNode)
+
+    #Gera os filhos do no atual de acordo com as regras
     def applyRulesToCurrentNode(self, node):
-        node.setChildren(self.rule1(node))
-        if node.getChildren()[-1] == None:
-            node.getChildren().pop()
-        else:
-            node.getChildren()[-1].setFather(node)
-        node.setChildren(self.rule2(node))
-        if node.getChildren()[-1] == None:
-            node.getChildren().pop()
-        else:
-            node.getChildren()[-1].setFather(node)
-        node.setChildren(self.rule3(node))
-        if node.getChildren()[-1] == None:
-            node.getChildren().pop()
-        else:
-            node.getChildren()[-1].setFather(node)
-        node.setChildren(self.rule4(node))
-        if node.getChildren()[-1] == None:
-            node.getChildren().pop()
-        else:
-            node.getChildren()[-1].setFather(node)
-        node.setChildren(self.rule5(node))
-        if node.getChildren()[-1] == None:
-            node.getChildren().pop()
-        else:
-            node.getChildren()[-1].setFather(node)
+        moveOne = 3
+        moveTwoEquals = 2
+        moveTwoDifferent = 1
+
+        self.setNewNode(node, self.rule1(node), moveOne)
+        self.setNewNode(node, self.rule2(node), moveTwoEquals)
+        self.setNewNode(node, self.rule3(node), moveOne)
+        self.setNewNode(node, self.rule4(node), moveTwoEquals)
+        self.setNewNode(node, self.rule5(node), moveTwoDifferent)
 
     # compara se os valores de M, C e B sao iguais em ambos os vetores
     def equals(self, value1, value2):

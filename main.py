@@ -1,3 +1,4 @@
+from BestFirst import BestFirst
 from Tree import Tree
 from Backtracking import Backtracking
 from BreadthFirst import BreadthFirst
@@ -22,7 +23,7 @@ if __name__ == '__main__':
     print("--------------------------------Problema dos Missionarios e Canibais--------------------------------")
     option = menu()
     
-    while option != 4:
+    while True:
         tree = Tree()
         tree.printRoot()
         match option:
@@ -33,7 +34,7 @@ if __name__ == '__main__':
             case 3:
                 search = DepthFirst()
             case 4:
-                pass
+                search = BestFirst()
             case 5:
                 pass
             case 6:

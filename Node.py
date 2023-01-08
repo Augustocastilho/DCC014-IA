@@ -7,6 +7,7 @@ class Node:
         self._rightValor = None
         self._father = None
         self._children = []
+        self._edgeWeightInPath = 0
 
     def setValors(self, left, right):
         self._leftValor = left
@@ -17,6 +18,9 @@ class Node:
 
     def setFather(self, node):
         self._father = node
+
+    def setEdgeWeightInPath(self, valor):
+        self._edgeWeightInPath = self._father.getEdgeWeightInPath() + valor
 
     def getLeftValor(self):
         return self._leftValor
@@ -29,6 +33,9 @@ class Node:
 
     def getFather(self):
         return self._father
+
+    def getEdgeWeightInPath(self):
+        return self._edgeWeightInPath
 
     def removeLastChild(self):
         self._children.pop()
