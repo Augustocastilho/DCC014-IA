@@ -14,18 +14,10 @@ class AStar(Search):
 
         while self._queue:
             print("Fila de abertos: ")
-            i = 0
-            j = 0
-            menorf = 1000000
             for node in self._queue:
-                f = node.getEvaluationFunction()
-                print(f, end=" ")
-                if f < menorf:
-                    j = i
-                    menorf = f
-                i += 1
+                print(node.getEvaluationFunction(), end=" ")
             print("")
-            currentNode = self._queue.pop(j)
+            currentNode = self._queue.pop(0)
             self.setCurrentNode(currentNode)
             self._visited.add(currentNode)
             if self.isGoal(currentNode):
@@ -37,7 +29,7 @@ class AStar(Search):
             for child in currentNode.getChildren():
                 if child not in self._visited:
                     self._queue.append(child)
-            self._queue.sort(key=lambda x: x.getEdgeWeightInPath())
+            self._queue.sort(key=lambda x: x.getEvaluationFunction())
             
         self.setFail(True)
         return
