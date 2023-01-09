@@ -1,8 +1,9 @@
-from BestFirst import BestFirst
 from Tree import Tree
 from Backtracking import Backtracking
 from BreadthFirst import BreadthFirst
 from DepthFirst import DepthFirst
+from BestFirst import BestFirst
+from Greedy import Greedy
 from AStar import AStar
 
 
@@ -36,10 +37,11 @@ if __name__ == '__main__':
             case 4:
                 search = BestFirst()
             case 5:
-                pass
+                search = Greedy()
             case 6:
                 search = AStar()
             case 7:
+                print("Saindo...")
                 exit()
             case default:
                 print("Opção Inválida")
